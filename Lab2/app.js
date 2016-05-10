@@ -2,9 +2,9 @@
 // Demo code for lecture & lab
 
 var userName = prompt('What is your name?');
-console.log('The user said there name is ' + userName);
+console.log('User is named ' + userName);
 
-alert('Hey there ' + userName + ', I\'m going to ask you some questions about me. Please click "ok", then answer Y or N to the next question.');
+alert('Alright, ' + userName + ' Let the Challenge begin. Are you ready to answer some stumpers about Nathan P. Keene?');
 
 var keepAsking = true;
 
