@@ -13,11 +13,11 @@ var questionIds = ['whereLived', 'birthplace', 'profession', 'interests', 'secre
 var questionType = ['multipleAnswers','tf','tf','tf','highorlow'];//designate question types for processing by correct code block
 var answerKeys = [['tokyo', 'brooklyn', 'new york', 'nyc', 'new york city'], ['y', 'YES'], ['y', 'YES'], ['n', 'NO'], 49];//all the answers!
 var feedback = [
-  ['Great start, ' + userName + '!', 'Oops, ' + userName + ', time to move on!'],
-  ['Yes, ' + userName + ', you\'re really doing great!', 'Awww, no points for you, ' + userName + '.'],
-  ['That\'s right, ' + userName + ', go to the head of the class!','Nope! Dang, ' + userName + ', you just got schooled!'],
-  ['You got it, ' + userName + '.  It\'s all about those kids, innit?', 'Awwww! You\'ve played valiantly, ' + userName + ', but it\'s clear old Nate cares more about his kids than anything in the world.'],
-  ['Spot on, ' + userName + '. Cha-CHINNNNNNG! Let\'s get to Nate\'s ATM!', 'Sorry, ' + userName + ', but that\'s too high.  Try again!','Sorry, ' + userName + ', but that\'s too low.  Try again!'] ];//feedback for each answer, appended to succeeding question text in each prompt
+  ['Great start, ' + userName + '! ', 'Oops, ' + userName + ', time to move on! '],
+  ['Yes, ' + userName + ', you\'re really doing great! ', 'Awww, no points for you, ' + userName + '. '],
+  ['That\'s right, ' + userName + ', go to the head of the class! ','Nope! Dang, ' + userName + ', you just got schooled! '],
+  ['You got it, ' + userName + '.  It\'s all about those kids, innit? ', 'Awwww! You\'ve played valiantly, ' + userName + ', but it\'s clear old Nate cares more about his kids than anything in the world. '],
+  ['Spot on, ' + userName + '. Cha-CHINNNNNNG! Let\'s get to Nate\'s ATM! ', 'Sorry, ' + userName + ', but that\'s too high.  Try again!','Sorry, ' + userName + ', but that\'s too low.  Try again!'] ];//feedback for each answer, appended to succeeding question text in each prompt
 
 
 for (i = 0;i < questionIds.length; i++) {//superQuiz ya
@@ -44,6 +44,7 @@ function superQuiz(id, qType, ansKey, feedback) {//now here it finally comes
   } else if( qType === 'highorlow') {//items allowing endless guesses
     highOrLow(question,userResponse,ansKey);//call fn. for guesswork questions
   }
+  questionId.textContent = question + ' -- You said ' + userResponse + '.';
 }
 
 function multipleAnswers(questionMA, userResponseMA, ansKeyMA) {
@@ -52,12 +53,12 @@ function multipleAnswers(questionMA, userResponseMA, ansKeyMA) {
       if (userResponseMA.toLowerCase() === ansKeyMA[k]) {
         guess = true;//set for positive fbk. at start of next round
         playerScore++;
-        console.log('userResponse: ' + userResponseMA);
         return;//quit loop
       } else if (j > 3) {
         guess = false;//set for neg. fbk. and complete any remaining iterations
         return;
       }
+      console.log('userResponse: ' + userResponseMA);
     }
     questionMA = 'Sorry try again.';//neg. fbk. before last iteration of lp.
     userResponseMA = prompt(questionMA + ' You have ' + (4 - (j + 1)) + ' guesses!');
@@ -68,8 +69,10 @@ function tf(userResponseTA,ansKeyTA) {//single-chance, strict match questions
   if (userResponseTA.toLowerCase() === ansKeyTA[0] || userResponseTA.toUpperCase() === ansKeyTA[1]) {//if user input matches answer when forced to all-upper or all-lower case
     playerScore++;
     guess = true;//set pos. fbk. condition
+    console.log('userResponse: ' + userResponseTA);
   } else {
     guess = false;//set neg. fbk. condition
+    console.log('userResponse: ' + userResponseTA);
   }
 }
 
@@ -85,5 +88,6 @@ function highOrLow(questionHL,userResponseHL, ansKeyHL) {//convergent guesswork 
   }
   alert('Spot on, ' + userName + '. Cha-CHINNNNNNG! Let\'s get to Nate\'s ATM!');//if correct
   playerScore ++;
+  console.log('userGuess: ' + userResponseHL);
   guess = true;//set for pos. fbk. (allows quiz scalability and reconfiguration)
 }// That's all folks
