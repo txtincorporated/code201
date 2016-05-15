@@ -69,7 +69,7 @@ function superQuiz(id, qType, qstn, ansKey, feedback) {//now here it finally com
 // }
 
 function multipleAnswers(questionMA, userResponseMA, ansKeyMA) {
-  for (j = 0; j <= 3; j++) {//allow up to four guesses
+  for (j = 0; j < 3; j++) {//allow up to four guesses
     for (k = 0; k < ansKeyMA.length; k++) {//for each of the acceptable answers
       if (userResponseMA.toLowerCase() === ansKeyMA[k]) {//If player got it right
         guess = true;//set for positive fbk. at start of next round
