@@ -89,6 +89,14 @@ function multipleAnswers(questionMA, userResponseMA, ansKeyMA) {
     questionMA = 'Sorry try again.';//neg. fbk. before last iteration of lp.
     userResponseMA = prompt(questionMA + ' You have ' + (4 - (j + 1)) + ' guesses!');
   }//state question and guesses remaining in each lp. iteration
+  for (k = 0; k < ansKeyMA.length; k++) {//for each of the acceptable answers
+    if (userResponseMA.toLowerCase() === ansKeyMA[k]) {//If player got it right
+      guess = true;//set for positive fbk. at start of next round
+      playerScore++;
+      console.log('userResponse: ' + userResponseMA);
+      prevResponse = userResponseMA;//Post most recent response to DOM element
+    }
+  }
 }
 
 function tf(userResponseTA,ansKeyTA) {//single-chance, strict match questions
