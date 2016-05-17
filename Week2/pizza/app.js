@@ -1,4 +1,5 @@
   //VARIABLES
+  //--FOR USE IN FUNCTIONS
   //Hold branch names in an array
   var branches = ['Hillsboro', 'Pearl', 'DowntownPDX', 'Buckman', 'PDXairport', 'Clackamas'];
 
@@ -8,11 +9,18 @@
   //Set min/max deliveries planned daily in three-hour blocks
   var dlvyBounds = [[0,4],[0,4],[1,4],[3,8],[5,12],[5,11]];
 
-  //Store hourly drivers needed
-  var driversPerHour = [];
+  //--FOR POPULATING OBJECTS
+  //Store output from hrlyPies in an array
+  var dailyMade;
 
   //Store output from hrlyDelivs in an array
-  //var dailyMade = [];
+  var dailyDelivs;
+
+  //Store hourly drivers needed in an array
+  var driversPerHour;
+
+ //--FOR POPULATING THE DOM
+
 
   //FUNCTIONS
   //Generate random data for pizzas made each hour
@@ -37,10 +45,12 @@
       dailyPies.push(wkly);
       console.log(wkly);
     }
+    console.log(dailyPies);
     return dailyPies;
   };
   var weeksPizzas = pizzaWeek();
   console.log(weeksPizzas);
+  dailyMade = weeksPizzas;
 
   //Build array of ea. day's totals
   var weeklyPizzas = function(arr) {
@@ -72,6 +82,7 @@
   };
   var dlvyTrend = hrlyDelivs(dlvyBounds);
   console.log(dlvyTrend);
+  dailyDelivs = dlvyTrend;
 
   //Determine no. dlvy. drivers needed for each hour
   var hrlyDrivers = function (dTrend) {
@@ -82,8 +93,9 @@
     }
     return drvsNeeded;
   };
-  var driverDemand = hrlyDrivers(dlvyTrend);
-  console.log(driverDemand);
+  var driverTrend = hrlyDrivers(dlvyTrend);
+  console.log(driverTrend);
+  driversPerHour = driverTrend;
 
   //Add up total number of pizzas made for a day
   // var pizzaTotal = function(arr) {
