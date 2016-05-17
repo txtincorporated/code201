@@ -30,10 +30,6 @@ var hrlyPies = function (pizzaBounds) {
 var pizzasMade = hrlyPies(pizzaBounds);
 console.log(pizzasMade);
 
-for (var i = 0; i < 6; i++) {
-  console.log(pizzasMade);
-};
-
 //Generate random data for deliveries made each hour
 var hrlyDelivs = function (dlvyBounds) {
   var delivsPerHour = [];
