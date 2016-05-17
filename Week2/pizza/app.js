@@ -9,10 +9,10 @@ var pizzaBounds = [[0,4],[0,7],[2,15],[15,35],[12,31],[5,20]];
 //Set min/max deliveries planned daily in three-hour blocks
 var dlvyBounds = [[0,4],[0,4],[1,4],[3,8],[5,12],[5,11]];
 
-//
+//Store hourly drivers needed
 var driversPerHour = [];
 
-//Store hrly.
+//Store output from hrlyDelivs in an array
 var dailyMade = [];
 
 //FUNCTIONS
@@ -48,7 +48,7 @@ console.log(dlvyTrend);
 var hrlyDrivers = Math.round(hrlyDelivs/3);
 
 
-//Add up total number of pizzas made for the day
+//Add up total number of pizzas made for a day
 var pizzaTotal = function(arr) {
   var pieCount = 0;
   for (var i=0; i<arr.length; i++) {
