@@ -17,7 +17,7 @@ var dailyMade;
 var dailyDelivs;
 
 //Store hourly drivers needed in an array
-var driversPerHour;
+var driverHours;
 
 //--FOR POPULATING INDEX.HTML
 var daysPies;
@@ -55,7 +55,7 @@ var weeksPizzas = pizzaWeek();
 console.log(weeksPizzas);
 dailyMade = weeksPizzas;
 
-//Build array of ea. day's totals
+//Add up total pizzas made for the day from hrly. array
 var dailyPizzas = function(arr) {
   var dailyTotal = 0;
   for (var i = 0; i<18; i++) {
@@ -86,7 +86,7 @@ var weeklyTotal = weeklyPizzas(weeksPizzas);
 console.log(weeklyTotal);
 piesServed = weeklyTotal;
 
-//Generate random data for deliveries made each hour
+//Generate random number array for deliveries made each hour
 var hrlyDelivs = function (dlvyBounds) {
   var delivsPerHour = [];
   for (i=0; i<6; i++) {
@@ -112,7 +112,7 @@ var hrlyDrivers = function (dTrend) {
 };
 var driverTrend = hrlyDrivers(dlvyTrend);
 console.log(driverTrend);
-driversPerHour = driverTrend;
+driverHours = driverTrend;
 
 //Add up total number of pizzas made for a day
 // var pizzaTotal = function(arr) {

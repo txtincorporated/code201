@@ -19,11 +19,18 @@ nav {
   text-align: center;
 }
 
-.navtext {
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #fee400;
+}
+
+.navdiv {
   display: inline-block;
   width: 33%;
-  text-decoration: none;
-
 }
 
 .title-bar {
