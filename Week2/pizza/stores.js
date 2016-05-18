@@ -3,11 +3,13 @@ var op_hours = ['8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','
 var Hillsboro = {
   name: Hillsboro,
 
-  pizzas:,//method to populate array from app.js
-  deliveries:,
-  driversNeeded:,
-  todaysPies:,
-  thisWksPies:,
+  todaysPies: daysPies,//get total pies for one day
+  thisWksPies: piesServed,//get total pies for one wk.
+  pizzas: dailyMade,//populate array of pies ea. hr. from app.js
+  deliveries: dailyDelivs,//populate array of deliveries ea. hr.
+  driversNeeded: driversPerHour,//populate array of driver need ea. hr.
 
-  storeStats:, //method to populate table from arrays above
-}
+  storeStats: function () {
+
+  } //method to populate table from arrays above
+};

@@ -19,10 +19,11 @@ var dailyDelivs;
 //Store hourly drivers needed in an array
 var driversPerHour;
 
-//--FOR POPULATING THE DOM
-var piesServed;
-var thisWk = document.getElementById('served');
-thisWk.textContent = piesServed;
+//--FOR POPULATING INDEX.HTML
+var daysPies;
+// var piesServed;
+// var thisWk = document.getElementById('served');
+// thisWk.textContent = piesServed;
 
 //FUNCTIONS
 //Generate random data for pizzas made each hour
@@ -55,6 +56,19 @@ console.log(weeksPizzas);
 dailyMade = weeksPizzas;
 
 //Build array of ea. day's totals
+var dailyPizzas = function(arr) {
+  var dailyTotal = 0;
+  for (var i = 0; i<18; i++) {
+    dailyTotal += arr[i];
+    console.log(dailyTotal);
+  }
+  return dailyTotal;
+};
+var piesToday = dailyPizzas(pizzasMade);
+daysPies = piesToday;
+console.log(piesToday);
+
+//Build array of ea. week's totals
 var weeklyPizzas = function(arr) {
   var weeklyTotals = [];
   var dailyTotal = 0;
@@ -66,7 +80,7 @@ var weeklyPizzas = function(arr) {
   }
   weeklyTotals.push(dailyTotal);
   console.log(weeklyTotals);
-  return weeklyTotals;
+  return weeklyTotals;//weeklyTotals.reduce(function(a,b) { return a +b})
 };
 var weeklyTotal = weeklyPizzas(weeksPizzas);
 console.log(weeklyTotal);

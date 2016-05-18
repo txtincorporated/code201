@@ -68,3 +68,33 @@ p {
 .nobullets {
   list-style-type: none;
 }
+
+table {
+  /*table-layout: fixed;*/
+  margin: auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 90%;
+  border: 1px solid white;
+  background-color: rgba(38, 38, 38, 0.75);
+  font-family: 'Roboto', sans-serif;;
+  font-size: .75em;
+  text-align: left;
+}
+
+th, td {
+  border-bottom: 1px solid rgba(230, 245, 255, 0.10);
+  height:1.5em;
+}
+
+#second {
+  border-bottom: 1px solid rgba(230, 245, 255, 0.50);
+}
+
+[scope=row] {
+  width: 5%;
+}
+
+tr {
+  width: 25%;
+}
