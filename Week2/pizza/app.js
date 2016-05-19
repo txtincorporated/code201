@@ -1,13 +1,19 @@
 //VARIABLES
-//--FOR USE IN FUNCTIONS
-//Hold branch names in an array
-var branches = ['Hillsboro', 'Pearl', 'DowntownPDX', 'Buckman', 'PDXairport', 'Clackamas'];
+var pizzaBounds = /*Hillsboro*/[[[0,4],[0,7],[2,15],[15,35],[12,31],[5,20]],
+[[0,4],[0,7],[2,15],[15,35],[12,31],[5,20]],
+/*Buckman*/[[0,4],[0,7],[5,15],[25,39],[22,36],[5,21]],
+/*Dntn.*/[[0,4],[0,7],[2,15],[10,26],[8,22],[0,2]],
+/*PDXairport*/[[0,4],[0,7],[2,15],[6,9],[4,8],[2,4]],
+/*Clackamas*/[[2,7],[3,8],[1,5],[5,13],[22,41],[15,20]]];
 
-//Set min/max pizzas planned daily in three-hour blocks
-var pizzaBounds = [[0,4],[0,7],[2,15],[15,35],[12,31],[5,20]];
+//pizzaBounds[pizzaBounds.length-1]//use instead of number in userShops
 
-//Set min/max deliveries planned daily in three-hour blocks
-var dlvyBounds = [[0,4],[0,4],[1,4],[3,8],[5,12],[5,11]];
+var dlvyBounds = /*Hillsboro*/[[[0,4],[0,4],[1,4],[3,8],[5,12],[5,11]],
+/*Beav.*/[[0,4],[0,4],[1,4],[3,8],[5,12],[6,11]],
+/*Buckman*/[[0,4],[0,4],[0,4],[13,18],[5,22],[16,31]],
+/*Dntn.*/[[0,4],[0,4],[1,4],[4,6],[7,15],[2,8]],
+/*PDXairport*/[[0,4],[0,4],[1,4],[5,18],[2,5],[3,1]],
+/*Clackamas*/[[3,5],[3,9],[1,4],[2,4],[15,42],[6,21]]];
 
 //--FOR POPULATING OBJECTS
 //Store output from hrlyPies in an array
@@ -29,8 +35,8 @@ var daysPies;
 //Generate random data for pizzas made each hour
 var hrlyPies = function (pizzaBounds) {
   var piesPerHour = [];
-  for (i=0; i<6; i++) {
-    for (j=0; j<3; j++){
+  for (var i=0; i<6; i++) {
+    for (var k=0; k<3; k++){
       var number = Math.floor(Math.random () * (pizzaBounds[i][1] - pizzaBounds[i][0])) + pizzaBounds[i][0];
       piesPerHour.push(number);
     }
@@ -40,20 +46,23 @@ var hrlyPies = function (pizzaBounds) {
 var pizzasMade = hrlyPies(pizzaBounds);
 console.log(pizzasMade);
 
-//Generate daily pizzas ea. hr. for six days
+//Generate and sum daily pizzas ea. hr. for six days
 var pizzaWeek = function () {
-  var dailyPies = [];
+  var dailyPies = [];//build 2-D array of six sets of data from hrlyPies
   for (var i=0; i<6; i++) {
-    var wkly = hrlyPies(pizzaBounds);
-    dailyPies.push(wkly);
-    console.log(wkly);
+    var daily = hrlyPies(pizzaBounds);
+    console.log(daily);
+    var dailyTotal = daily.reduce(function(a,b) {return a + b;});
+    console.log(dailyTotal);
+    dailyPies.push(dailyTotal);
   }
   console.log(dailyPies);
-  return dailyPies;
+  var weeklyTotal = dailyPies.reduce(function(a,b) {return a + b;});
+  console.log(weeklyTotal);
+  return weeklyTotal;
 };
-var weeksPizzas = pizzaWeek();
-console.log(weeksPizzas);
-dailyMade = weeksPizzas;
+var weeksPizzas = this.pizzaWeek(this.pizzas);
+console.log(weeksPizzas);dailyMade = weeksPizzas;
 
 //Add up total pizzas made for the day from hrly. array
 var dailyPizzas = function(arr) {
@@ -69,22 +78,22 @@ daysPies = piesToday;
 console.log(piesToday);
 
 //Build array of ea. week's totals
-var weeklyPizzas = function(arr) {
-  var weeklyTotals = [];
-  var dailyTotal = 0;
-  for (var i = 0; i<arr.length; i++) {//for ea. of six days
-    for (var j = 0; j<18; j++) {
-      dailyTotal += arr[i][j];
-      console.log(dailyTotal);
-    }
-  }
-  weeklyTotals.push(dailyTotal);
-  console.log(weeklyTotals);
-  return weeklyTotals;//weeklyTotals.reduce(function(a,b) { return a +b})
-};
-var weeklyTotal = weeklyPizzas(weeksPizzas);
-console.log(weeklyTotal);
-piesServed = weeklyTotal;
+// var weeklyPizzas = function(arr) {
+//   var weeklyTotals = [];
+//   var dailyTotal = 0;
+//   for (var i = 0; i<arr.length; i++) {//for ea. of six days
+//     for (var j = 0; j<18; j++) {
+//       dailyTotal += arr[i][j];
+//       console.log(dailyTotal);
+//     }
+//   }
+//   weeklyTotals.push(dailyTotal);
+//   console.log(weeklyTotals);
+//   return weeklyTotals;//weeklyTotals.reduce(function(a,b) { return a +b})
+// };
+// var weeklyTotal = weeklyPizzas(weeksPizzas);
+// console.log(weeklyTotal);
+// piesServed = weeklyTotal;
 
 //Generate random number array for deliveries made each hour
 var hrlyDelivs = function (dlvyBounds) {
@@ -103,12 +112,12 @@ dailyDelivs = dlvyTrend;
 
 //Determine no. dlvy. drivers needed for each hour
 var hrlyDrivers = function (dTrend) {
-  var drvsNeeded = [];
+  var driversNeeded = [];
   for (var i = 0; i < dTrend.length; i++) {
     var drvNeed = Math.round(dTrend[i]/3);
-    drvsNeeded.push(drvNeed);
+    driversNeeded.push(drvNeed);
   }
-  return drvsNeeded;
+  return driversNeeded;
 };
 var driverTrend = hrlyDrivers(dlvyTrend);
 console.log(driverTrend);
