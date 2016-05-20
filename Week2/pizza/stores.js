@@ -18,67 +18,66 @@ var Hillsboro = {
   driversNeeded: driverHours[0],//populate array of driver need ea. hr.
 
   //TABLE BUILDER
-  shopTable: function () {//method to populate table from arrays in I.
-    //whip up 'th' and 'tfoot' elements for ea. member of 'branches'
-    //append to each branch's 'div' in sales-data.html
-  }
-  //whip up one 'tr' element for ea. index of op_hours
-  //whip up three 'td' elements for ea. 'tr'
-  //append ea. 'td' to its 'tr'
-
-  //append ea. 'tr' element and its dependents to the prev. sib. in sales-data 'div.diptych' starting w/ second 'th' element
-
-  //append 'tfoot' to the last 'tr'
-
-  //if ea. element simultaneously pop'd with its appt. data, go have a beer
-
-  //otherwise, write function to populate ea. 'td' element from arrays in I.
-};
+//   shopTable: function () {//method to populate table from arrays in I.
+//     //whip up 'th' and 'tfoot' elements for ea. member of 'branches'
+//     //append to each branch's 'div' in sales-data.html
+//   }
+//   //whip up one 'tr' element for ea. index of op_hours
+//   //whip up three 'td' elements for ea. 'tr'
+//   //append ea. 'td' to its 'tr'
 //
-// function Shop (br, pizzaBounds, dlvyBounds, todaysPies, pizzas, deliveries, driversNeeded) {
-//   this.br = br;
-//   this.pizzaBounds = pizzaBounds;
-//   this.dlvyBounds = dlvyBounds;
+//   //append ea. 'tr' element and its dependents to the prev. sib. in sales-data 'div.diptych' starting w/ second 'th' element
 //
-//   //SUMMATIVE STATS.
-//   this.todaysPies = dailyPizzas(hrlyPies(pizzaBounds));//get total pies for one day
-//   //ARRAYED STATS.
-//   this.pizzas = hrlyPies(pizzaBounds);//populate array of pies ea. hr. from app.js
-//   this.deliveries = hrlyDelivs(dlvyBounds);//populate array of deliveries ea. hr.
-//   this.driversNeeded = hrlyDrivers(hrlyDelivs(dlvyBounds));//populate array of driver need ea. hr.
+//   //append 'tfoot' to the last 'tr'
 //
-// //METHODS
-// //WEEKLY TOTALER
-//   this.pizzaWeek = function pizzaWeek() {
-//     var dailyPies = [];//build 2-D array of six sets of data from hrlyPies
-//     for (var i=0; i<6; i++) {
-//       var daily = hrlyPies(pizzaBounds);
-//       console.log(daily);
-//       var dailyTotal = daily.reduce(function(a,b) {return a + b;});
-//       console.log(dailyTotal);
-//       dailyPies.push(dailyTotal);
-//     }
-//     console.log(dailyPies);
-//     var weeklyTotal = dailyPies.reduce(function(a,b) {return a + b;});
-//     console.log(weeklyTotal);
-//     return weeklyTotal;
-//   };
-//   var weeksPizzas = this.pizzaWeek(this.pizzas);
-//   this.weeksPizzas = weeksPizzas;//get total pies for one wk.
-//   console.log(weeksPizzas);
+//   //go have a beer
 //
-//   //TABLE BUILDER
-//   this.shopTable = function () {//method to populate table from arrays in I.
-//     var storeStats = document.getElementById('storestats');
-//     var elShopname = document.createElement('h3');
-//     console.log('Created h3');
-//
-//     var shopName = document.createTextNode(this.br);
-//     elShopname.appendChild(shopName);
-//     storeStats.appendChild(elShopname);
-//   };
 // };
 //
+function Shop (br, pizzaBounds, dlvyBounds, todaysPies, pizzas, deliveries, driversNeeded) {
+  this.br = br;
+  this.pizzaBounds = pizzaBounds;
+  this.dlvyBounds = dlvyBounds;
+
+  //SUMMATIVE STATS.
+  this.todaysPies = dailyPizzas(hrlyPies(pizzaBounds));//get total pies for one day
+  //ARRAYED STATS.
+  this.pizzas = hrlyPies(pizzaBounds);//populate array of pies ea. hr. from app.js
+  this.deliveries = hrlyDelivs(dlvyBounds);//populate array of deliveries ea. hr.
+  this.driversNeeded = hrlyDrivers(hrlyDelivs(dlvyBounds));//populate array of driver need ea. hr.
+
+//METHODS
+//WEEKLY TOTALER
+  this.pizzaWeek = function pizzaWeek() {
+    var dailyPies = [];//build 2-D array of six sets of data from hrlyPies
+    for (var i=0; i<6; i++) {
+      var daily = hrlyPies(pizzaBounds);
+      console.log(daily);
+      var dailyTotal = daily.reduce(function(a,b) {return a + b;});
+      console.log(dailyTotal);
+      dailyPies.push(dailyTotal);
+    }
+    console.log(dailyPies);
+    var weeklyTotal = dailyPies.reduce(function(a,b) {return a + b;});
+    console.log(weeklyTotal);
+    return weeklyTotal;
+  };
+  var weeksPizzas = this.pizzaWeek(this.pizzas);
+  this.weeksPizzas = weeksPizzas;//get total pies for one wk.
+  console.log(weeksPizzas);
+
+  //TABLE BUILDER
+  this.shopTable = function () {//method to populate table from arrays in I.
+    var storeStats = document.getElementById('storestats');
+    var elShopname = document.createElement('h3');
+    console.log('Created h3');
+
+    var shopName = document.createTextNode(this.br);
+    elShopname.appendChild(shopName);
+    storeStats.appendChild(elShopname);
+  };
+};
+
 //
 // var hillsboroShop = new Shop (branches[0], pizzaBounds[0], dlvyBounds[0], dailyPizzas(pizzasMade), hrlyPies(pizzaBounds), hrlyDelivs(dlvyBounds), hrlyDrivers(dlvyTrend));
 // console.log(hillsboroShop);
