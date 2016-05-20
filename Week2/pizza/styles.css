@@ -6,17 +6,31 @@ html {
   color: white;
 }
 
+span {
+  display: block;
+}
+
 #sales {
   background-image: none;
   background-color: #262626;
 }
 
 nav {
-  vertical-align: bottom;
+  /*vertical-align: bottom;*/
   display:block;
-  margin: auto;
-  height:3em;
+  /*margin: auto;*/
+  height:3rem;
   text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 45px;
+  width: 95%;
+  border-radius: 10px;
+  background-color: rgba(230, 245, 255, 0.25);
+  text-align: center;
+  vertical-align: middle;
+
 }
 
 a {
@@ -34,7 +48,9 @@ a:hover {
 }
 
 .title-bar {
-  margin:auto;
+  position: relative;
+  top: 45px;
+  margin:45px;
   width: 95%;
   border-radius: 10px;
   background-color: rgba(230, 245, 255, 0.25);
@@ -56,16 +72,25 @@ p {
   margin: auto;
   height:70%;
   width:95%;
+  position: fixed;
+  left: 20px;
+  top: 217px;
 }
 .diptych {
   background-color: rgba(230, 245, 255, 0.25);
   display:inline-block;
+  position: relative;
   margin:inherit;
   text-align: center;
-  vertical-align: middle;
+  vertical-align: top;
   border-radius: 10px;
   width:49%;
-  height:60%
+  /*height:60%*/
+  min-height: 500px;
+}
+
+#storestats {
+  float: right;
 }
 
 #served {
