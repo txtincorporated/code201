@@ -119,6 +119,10 @@ th, td {
   height:1.5em;
 }
 
+td {
+  font-weight: lighter;
+}
+
 #second {
   border-bottom: 1px solid rgba(230, 245, 255, 0.50);
 }

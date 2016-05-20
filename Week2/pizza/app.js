@@ -44,40 +44,40 @@ var hrlyPies = function (pizzaBounds) {
   return piesPerHour;
 };
 var pizzasMade = hrlyPies(pizzaBounds);
-console.log(pizzasMade);
+//console.log(pizzasMade);
 
-//Generate and sum daily pizzas ea. hr. for six days
-var pizzaWeek = function () {
-  var dailyPies = [];//build 2-D array of six sets of data from hrlyPies
-  for (var i=0; i<6; i++) {
-    var daily = hrlyPies(pizzaBounds);
-    console.log(daily);
-    var dailyTotal = daily.reduce(function(a,b) {return a + b;});
-    console.log(dailyTotal);
-    dailyPies.push(dailyTotal);
-  }
-  console.log(dailyPies);
-  var weeklyTotal = dailyPies.reduce(function(a,b) {return a + b;});
-  console.log(weeklyTotal);
-  return weeklyTotal;
-};
-var weeksPizzas = this.pizzaWeek(this.pizzas);
-console.log(weeksPizzas);dailyMade = weeksPizzas;
-
+// //Generate and sum daily pizzas ea. hr. for six days
+// var pizzaWeek = function () {
+//   var dailyPies = [];//build 2-D array of six sets of data from hrlyPies
+//   for (var i=0; i<6; i++) {
+//     var daily = hrlyPies(pizzaBounds);
+//     console.log(daily);
+//     var dailyTotal = daily.reduce(function(a,b) {return a + b;});
+//     console.log(dailyTotal);
+//     dailyPies.push(dailyTotal);
+//   }
+//   console.log(dailyPies);
+//   var weeklyTotal = dailyPies.reduce(function(a,b) {return a + b;});
+//   console.log(weeklyTotal);
+//   return weeklyTotal;
+// };
+// var weeksPizzas = this.pizzaWeek(this.pizzas);
+// console.log(weeksPizzas);dailyMade = weeksPizzas;
+//
 //Add up total pizzas made for the day from hrly. array
 var dailyPizzas = function(arr) {
   var dailyTotal = 0;
   for (var i = 0; i<18; i++) {
     dailyTotal += arr[i];
-    console.log(dailyTotal);
+    //console.log(dailyTotal);
   }
   return dailyTotal;
 };
 var piesToday = dailyPizzas(pizzasMade);
 daysPies = piesToday;
-console.log(piesToday);
-
-//Build array of ea. week's totals
+//console.log(piesToday);
+//
+// //Build array of ea. week's totals
 // var weeklyPizzas = function(arr) {
 //   var weeklyTotals = [];
 //   var dailyTotal = 0;
@@ -107,7 +107,7 @@ var hrlyDelivs = function (dlvyBounds) {
   return delivsPerHour;
 };
 var dlvyTrend = hrlyDelivs(dlvyBounds);
-console.log(dlvyTrend);
+//console.log(dlvyTrend);
 dailyDelivs = dlvyTrend;
 
 //Determine no. dlvy. drivers needed for each hour
@@ -120,7 +120,7 @@ var hrlyDrivers = function (dTrend) {
   return driversNeeded;
 };
 var driverTrend = hrlyDrivers(dlvyTrend);
-console.log(driverTrend);
+//console.log(driverTrend);
 driverHours = driverTrend;
 
 //Add up total number of pizzas made for a day
