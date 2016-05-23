@@ -86,7 +86,7 @@ function Shop (br, pizzaBounds, dlvyBounds) {//OPEN SHOP OBJECT
     var thC = document.createElement('th');
     thC.setAttribute('scope','col');
     thC.setAttribute('class','th-centered');
-    thC.textContent = 'Drivers needed';
+    thC.textContent = 'Drivers needed ';
     trC.appendChild(thC);//column head for drivers needed
 
     for (var i=0; i<this.pizzas.length; i++) {//OPEN FOR-LOOP L1 (adds data rows)
