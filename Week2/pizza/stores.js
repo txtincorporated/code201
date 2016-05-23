@@ -32,17 +32,22 @@ function Shop (br, pizzaBounds, dlvyBounds) {//OPEN SHOP OBJECT
     console.log(weeklyTotal);
     return weeklyTotal;
   };
+
   var weeksPizzas = this.pizzaWeek(this.pizzas);
   this.weeksPizzas = weeksPizzas;//get total pies for one wk.
+  odysseys.push(weeksPizzas);
   console.log(weeksPizzas);
+  console.log(odysseys);
 
+//SHOP TABLE CONSTRUCTOR
   this.shopTable = function () {//OPEN TABLE (method to populate table from arrays in I.)
     var storeStats = document.getElementById('locations');
     var elShopname = document.createElement('h3');
-    console.log('Created h3');
+    console.log('Created h3 with id of');
 
     //Append shop name h3 to #locations div as table title
     elShopname.textContent = this.br;
+    elShopname.setAttribute('id', this.br);
     storeStats.appendChild(elShopname);
 
     //Append new store table to #locations div below table title
@@ -109,25 +114,95 @@ function Shop (br, pizzaBounds, dlvyBounds) {//OPEN SHOP OBJECT
       pizzaTable.appendChild(tr1);//Add one cell for each stat in row
       console.log('Added row ' + [i]);
     }//CLOSE FOR-LOOP L1
+
+    //set page top return
+    var trLast = document.createElement('tr');
+    trLast.setAttribute('class','lastrow');
+    var thLast = document.createElement('th');
+    thLast.setAttribute('class','lastrow');
+    trLast.appendChild(thLast);//Add row and row head for last row
+
+    var tdL1 = document.createElement('td');
+    tdL1.setAttribute('class','lastrow');
+    trLast.appendChild(tdL1);
+    var tdL2 = document.createElement('td');
+    tdL2.setAttribute('class','lastrow');
+    tdL2.innerHTML = '<a href=#statstop>Back to top</a>';
+    trLast.appendChild(tdL2);
+    var tdL3 = document.createElement('td');
+    tdL3.setAttribute('class','lastrow');
+    trLast.appendChild(tdL3);
+    pizzaTable.appendChild(trLast);//Add one cell for each stat in row
+    console.log(tdL2);
+
   };//CLOSE TABLE
   this.shopTable();
+
+  //TABLE LINK BUTTON CONSTRUCTOR
+  //Append new store link to #storelinks div below table title
+  var locLink = document.getElementById('storelinks');
+
+  //create an anchor element, set href
+  var elButtonLink = document.createElement('a');
+  elButtonLink.href = '#' + this.br;
+
+  //create a div inside anchor, set class
+  elButtonLink.innerHTML = '<div class=\"linkbttn\"><h3>' + this.br + '</h3></div>';
+  console.log(elButtonLink);
+
+  //Append new anchor div to location list
+  locLink.appendChild(elButtonLink);
+  console.log(elButtonLink);
 };//CLOSE SHOP OBJECT
 
 //POPULATOR
-var hillsboroShop = new Shop (branches[0], pizzaBounds[0], dlvyBounds[0]);
-console.log(hillsboroShop);
+var makeStore = function () {
+  for (var i = 0; i<branches.length; i++) {
+    var newShop = new Shop (branches[i], pizzaBounds[i], dlvyBounds[i]);
+    console.log(newShop);
+  }
+};
+makeStore();
 
-var beavertonShop = new Shop (branches[1], pizzaBounds[1], dlvyBounds[1]);
-console.log(beavertonShop);
+//SHOP INITIATOR
+var elUnhide = document.getElementById('addBttn');
+function overLays () {
+  var showForm = getElementById('add-shop');
+  var hidePage = getElementById('curtain');
+  showForm.setAttribute('visibility', 'visible');
+  hidePage.setAttribute('visibility', 'visible');
+};
 
-var buckmanShop = new Shop (branches[2], pizzaBounds[2], dlvyBounds[2]);
-console.log(buckmanShop);
+elUnhide.addEventListener('click',overLays, false);
 
-var dntnShop = new Shop (branches[3], pizzaBounds[3], dlvyBounds[3]);
-console.log(dntnShop);
+var elSubmit, elName, elPies, elDlvys;
+elSubmit = document.getElementById('submit');
+elName = document.getElementById('brName');
+elPies = document.getElementById('maxminPies');
+elDlvys = document.getElementById('maxminDlvys');
 
-var airptShop = new Shop (branches[4], pizzaBounds[4], dlvyBounds[4]);
-console.log(airptShop);
+function pushArrays () {
+  branches.push('brName');
+  pizzaBounds.push('maxminPies');
+  dlvyBounds.push('maxminDlvys');
+};
 
-var clackamasShop = new Shop (branches[5], pizzaBounds[5], dlvyBounds[5]);
-console.log(clackamasShop);
+function hideForm () {
+  var hideForm = getElementById('add-shop');
+  var showPage = getElementById('curtain');
+  hideForm.setAttribute('visibility', 'hidden');
+  showPage.setAttribute('visibility', 'hidden');
+};
+
+elSubmit.addEventListener('click', pushArrays, false);
+elSubmit.addEventListener('click', hideForm, false);
+
+//POST WEEKLY CHAIN TOTALS TO CUSTOMER PAGE
+var cheeseOdysseus = function () {
+  var odysseyTotal = odysseys.reduce(function(a,b) {return a + b;});
+  console.log(odysseyTotal);
+  return odysseyTotal;
+};
+var weeklyBoast = cheeseOdysseus();
+var postBoast = document.getElementById('served');
+postBoast.textContent = weeklyBoast;
