@@ -6,6 +6,10 @@ html {
   color: white;
 }
 
+body {
+  padding: 25px;
+}
+
 span {
   display: block;
 }
@@ -17,20 +21,18 @@ span {
 
 nav {
   /*vertical-align: bottom;*/
-  display:block;
+  /*display:block;*/
   /*margin: auto;*/
   height:3rem;
   text-align: center;
   position: fixed;
-  top: 0px;
-  left: 0px;
-  margin: 45px;
+  margin: 0 0 45px 0;
   width: 95%;
   border-radius: 10px;
   background-color: rgba(230, 245, 255, 0.25);
   text-align: center;
   vertical-align: middle;
-
+  z-index: 10;
 }
 
 a {
@@ -48,14 +50,18 @@ a:hover {
 }
 
 .title-bar {
-  position: relative;
-  top: 45px;
-  margin:45px;
+  position: fixed;
+  margin:55px 0 0 0;
   width: 95%;
+  height: auto;
   border-radius: 10px;
   background-color: rgba(230, 245, 255, 0.25);
   text-align: center;
   vertical-align: middle;
+}
+
+.title {
+  margin: 0 0 0 0;
 }
 
 h1 {
@@ -69,29 +75,29 @@ p {
 }
 
 #bodydiv {
-  margin: auto;
+  /*margin: auto;*/
   height:70%;
   width:95%;
   position: fixed;
-  left: 20px;
-  top: 217px;
 }
+
+.storestats {
+  float: right;
+  margin: 298px 5px 0 0;
+}
+
 .diptych {
   background-color: rgba(230, 245, 255, 0.25);
   display:inline-block;
   position: relative;
-  margin:inherit;
+  margin:200px 0 0 0;
   text-align: center;
   vertical-align: top;
   border-radius: 10px;
   width:49%;
-  /*height:60%*/
   min-height: 500px;
 }
 
-#storestats {
-  float: right;
-}
 
 #served {
   font-size: 8em;
@@ -119,8 +125,13 @@ th, td {
   height:1.5em;
 }
 
+.th-centered {
+  text-align: center;
+}
+
 td {
   font-weight: lighter;
+  text-align: center;
 }
 
 #second {
