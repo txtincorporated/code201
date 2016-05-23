@@ -74,19 +74,19 @@ function Shop (br, pizzaBounds, dlvyBounds) {//OPEN SHOP OBJECT
     var thA = document.createElement('th');
     thA.setAttribute('scope','col');
     thA.setAttribute('class','th-centered');
-    thA.textContent = 'Pizzas made hourly';
+    thA.textContent = 'Pizzas made';
     trC.appendChild(thA);//column head for pizzas made
 
     var thB = document.createElement('th');
     thB.setAttribute('scope','col','class','th-centered');
     thB.setAttribute('class','th-centered');
-    thB.textContent = 'Pizzas delivered hourly';
+    thB.textContent = 'Pizzas delivered';
     trC.appendChild(thB);//column head for deliveries made
 
     var thC = document.createElement('th');
     thC.setAttribute('scope','col');
     thC.setAttribute('class','th-centered');
-    thC.textContent = 'Drivers needed hourly';
+    thC.textContent = 'Drivers needed';
     trC.appendChild(thC);//column head for drivers needed
 
     for (var i=0; i<this.pizzas.length; i++) {//OPEN FOR-LOOP L1 (adds data rows)
